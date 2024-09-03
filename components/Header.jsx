@@ -10,7 +10,7 @@ export default function Header() {
             <div className="container mx-auto flex justify-between items-center">
                 <Link href='/'>
                 <h1 className="text-4xl font-semibold">
-                    Joao Mercier<span className="text-accent">.</span>
+                    Mercier<span className="text-accent">.</span>
                 </h1>
                 </Link>
                 {/* desktop nav & contact button*/}
