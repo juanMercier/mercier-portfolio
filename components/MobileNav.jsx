@@ -37,7 +37,7 @@ export default function MobileNav() {
                 <CiMenuFries className="text-[32px] text-accent" />
             </SheetTrigger>
             <SheetContent className="flex flex-col">
-                <div className="mt-32 mb-40 text-center text-2xl">
+                <div className="mt-24 mb-24 text-center text-2xl">
                     <Link href='/'>
                         <h1 className="text-4xl font-semibold">
                             Mercier<span className="text-accent">.</span>
