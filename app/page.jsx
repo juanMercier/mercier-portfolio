@@ -18,7 +18,7 @@ export default function Home() {
               Passionate software engineer with over three years of experience in backend development, Node.js, cloud infrastructure, and microservices architecture.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <a href="/public/assets/JoaoMercierResume.pdf" download>
+              <a href="/assets/JoaoMercierResume.pdf" download="JoaoMercierResume.pdf">
                 <Button
                   variant="outline"
                   size="lg"
