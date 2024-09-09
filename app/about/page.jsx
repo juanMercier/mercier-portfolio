@@ -166,12 +166,12 @@ const skills = {
 
 export default function About() {
     return (
-        <motion.div initial={{ opacity: 0 }}
+        <motion.section initial={{ opacity: 0 }}
             animate={{
                 opacity: 1,
                 transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
             }}
-            className='flex items-center justify-center py-12 xl:py-0'
+            className='min-h-[80vh] flex flex-col justify-center py-12 xl:px-0'
         >
             <div className="container mx-auto">
                 <Tabs defaultValue='experience' className='flex flex-col xl:flex-row gap-[60px]'
@@ -265,6 +265,6 @@ export default function About() {
                     </div>
                 </Tabs>
             </div>
-        </motion.div>
+        </motion.section>
     )
 }
