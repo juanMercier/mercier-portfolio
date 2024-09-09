@@ -171,7 +171,7 @@ export default function About() {
                 opacity: 1,
                 transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
             }}
-            className='flex items-center justify-center py-12 xl:py-0'
+            className='min-h-[80vh] flex flex-col justify-center py-12 xl:px-0'
         >
             <div className="container mx-auto">
                 <Tabs defaultValue='experience' className='flex flex-col xl:flex-row gap-[60px]'
