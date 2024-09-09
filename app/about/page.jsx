@@ -166,7 +166,7 @@ const skills = {
 
 export default function About() {
     return (
-        <motion.div initial={{ opacity: 0 }}
+        <motion.section initial={{ opacity: 0 }}
             animate={{
                 opacity: 1,
                 transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
@@ -265,6 +265,6 @@ export default function About() {
                     </div>
                 </Tabs>
             </div>
-        </motion.div>
+        </motion.section>
     )
 }
