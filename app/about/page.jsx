@@ -20,7 +20,7 @@ import { motion } from 'framer-motion'
 
 const about = {
     title: "About me",
-    description: "Passionate software engineer with over three years of experience in backend development",
+    description: "Driven and innovative, always seeking to bridge technology with impactful solutions.",
     info: [
         {
             fieldName: "Name",
@@ -50,6 +50,10 @@ const about = {
             fieldName: "Languages",
             fieldValue: "English, Portuguese, Spanish"
         },
+        {
+            fieldName: "Interests",
+            fieldValue: "Volunteer"
+        },
 
     ]
 }
@@ -57,12 +61,12 @@ const about = {
 const experience = {
     icon: "",
     title: "My Experience",
-    description: "Passionate software engineer with over three years of experience in backend development",
+    description: "Years of hands-on expertise in dynamic and fast-paced environments.",
     items: [
         {
-            company: "Innowave",
-            position: "Software Developer",
-            duration: "2020 - 2022"
+            company: "Freelancer",
+            position: "Fullstack Developer",
+            duration: "2024"
         },
         {
             company: "Lynxai",
@@ -70,19 +74,9 @@ const experience = {
             duration: "2022 - 2024"
         },
         {
-            company: "Recycular",
-            position: "Frontend Developer",
-            duration: "2019 - 2020"
-        },
-        {
-            company: "Recycular",
-            position: "Frontend Developer",
-            duration: "2019 - 2020"
-        },
-        {
-            company: "Recycular",
-            position: "Frontend Developer",
-            duration: "2019 - 2020"
+            company: "Innowave",
+            position: "Software Developer",
+            duration: "2020 - 2022"
         },
         {
             company: "Recycular",
@@ -95,71 +89,76 @@ const experience = {
 const education = {
     icon: "",
     title: "My Education",
-    description: "Passionate software engineer with over three years of experience in backend development",
+    description: "Continuously expanding knowledge through formal education and industry certifications.",
     items: [
         {
             institution: "ISCTE",
-            position: "Bsc",
+            degree: "Computer Science",
             duration: "2016 - 2020",
         },
         {
             institution: "ISCTE",
-            position: "Bsc",
+            degree: "Business Management",
             duration: "2016 - 2020",
         },
         {
-            institution: "ISCTE",
-            position: "Bsc",
-            duration: "2016 - 2020",
+            institution: "Tallinn University",
+            degree: "Erasmus+ in Computer Engineering",
+            duration: "2019",
         },
         {
-            institution: "ISCTE",
-            position: "Bsc",
-            duration: "2016 - 2020",
+            institution: "AWS",
+            degree: "Certified Developer",
+            duration: "2020",
         },
         {
-            institution: "ISCTE",
-            position: "Bsc",
-            duration: "2016 - 2020",
+            institution: "Rumos",
+            degree: "Practical Python Programming",
+            duration: "2022",
+        },
+        {
+            institution: "Appian",
+            degree: "Certified Developer",
+            duration: "2021",
         }
     ]
 }
 
 const skills = {
     title: "My skills",
-    description: "Passionate software engineer with over three years of experience in backend development",
+    description: "Versatile problem-solver with a focus on efficiency and adaptability.",
     items: [
         {
             icon: <FaJs />,
             name: "Javascript",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <FaReact />,
+            name: "React.js",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <FaAws />,
+            name: "AWS",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <FaPython />,
+            name: "Python",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <FaNodeJs />,
+            name: "Node.js",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <FaFigma />,
+            name: "Figma",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <SiNextdotjs/>,
+            name: "Next.js",
         },
         {
-            icon: <FaJs />,
-            name: "Javascript",
+            icon: <SiTailwindcss />,
+            name: "Tailwind CSS",
         }
     ]
 }
@@ -172,12 +171,12 @@ export default function About() {
                 opacity: 1,
                 transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
             }}
-            className='min-h-[80vh] flex items-center justify-center py-12 xl:py-0'
+            className='flex items-center justify-center py-12 xl:py-0'
         >
             <div className="container mx-auto">
                 <Tabs defaultValue='experience' className='flex flex-col xl:flex-row gap-[60px]'
                 >
-                    <TabsList className="fles flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+                    <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
                         <TabsTrigger value="experience">Experience</TabsTrigger>
                         <TabsTrigger value="education">Education</TabsTrigger>
                         <TabsTrigger value="skills">Skills</TabsTrigger>
@@ -186,16 +185,82 @@ export default function About() {
 
                     <div className='min-h-[70px] w-full'>
                         <TabsContent value="experience" className="w-full">
-                            experience
+                            <div className='flex flex-col gap-[30px] text-center xl:text-left'>
+                                <h3 className='text-4xl font-bold'>{experience.title}</h3>
+                                <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>{experience.description}</p>
+                                <ScrollArea className="h-[400px]">
+                                    <ul className='grid grid-cols-1 lg:grid-cols-2 gap-[30px]'>
+                                        {experience.items.map((item, index) => {
+                                            return <li key={index} className='bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 '>
+                                                <span className='text-accent'>{item.duration}</span>
+                                                <h3 className='text-xl max-w-[260px] min-h-[60px] text-center lg:text-left'>{item.position}</h3>
+                                                <div className='flex items-center gap-3'>
+                                                    <span className='w-[6px] h-[6px] rounded-full bg-accent'></span>
+                                                    <p className='text-white/60'>{item.company}</p>
+                                                </div>
+                                            </li>
+                                        })}
+                                    </ul>
+                                </ScrollArea>
+                            </div>
                         </TabsContent>
                         <TabsContent value="education" className="w-full">
-                            education
+                            <div className='flex flex-col gap-[30px] text-center xl:text-left'>
+                                <h3 className='text-4xl font-bold'>{education.title}</h3>
+                                <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>{education.description}</p>
+                                <ScrollArea className="h-[400px]">
+                                    <ul className='grid grid-cols-1 lg:grid-cols-2 gap-[30px]'>
+                                        {education.items.map((item, index) => {
+                                            return <li key={index} className='bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 '>
+                                                <span className='text-accent'>{item.duration}</span>
+                                                <h3 className='text-xl max-w-[260px] min-h-[60px] text-center lg:text-left'>{item.degree}</h3>
+                                                <div className='flex items-center gap-3'>
+                                                    <span className='w-[6px] h-[6px] rounded-full bg-accent'></span>
+                                                    <p className='text-white/60'>{item.institution}</p>
+                                                </div>
+                                            </li>
+                                        })}
+                                    </ul>
+                                </ScrollArea>
+                            </div>
                         </TabsContent>
-                        <TabsContent value="skills" className="w-full">
-                            skills
+                        <TabsContent value="skills" className="w-full h-full">
+                            <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                                <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                                    <h3 className='text-4xl font-bold'>{skills.title}</h3>
+                                    <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>{skills.description}</p>
+                                </div>
+                                <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]'>
+                                    {skills.items.map((item, index) => {
+                                        return <li key={index}>
+                                            <TooltipProvider delayDuration={100}> 
+                                                <Tooltip>
+                                                    <TooltipTrigger className='w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group'>
+                                                        <div className='text-6xl group-hover:text-accent transition-all duration-300'>{item.icon}</div>
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <p className='capitalize'>{item.name}</p>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
+                                        </li>
+                                    })}
+                                </ul>
+                            </div>
                         </TabsContent>
-                        <TabsContent value="about" className="w-full">
-                            about
+                        <TabsContent value="about" className="w-full text-center xl:text-left">
+                            <div className='flex flex-col gap-[30px]'>
+                                <h3 className='text-4xl font-bold'>{about.title}</h3>
+                                <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>{about.description}</p>
+                                <ul className='grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0'>
+                                    {about.info.map((item, index) => {
+                                        return <li key={index} className='flex items-center justify-center xl:justify-start gap-4'>
+                                            <span className='text-white/60'>{item.fieldName}</span>
+                                            <span className='text-md'>{item.fieldValue}</span>
+                                        </li>
+                                    })}
+                                </ul>
+                            </div>
                         </TabsContent>
                     </div>
                 </Tabs>
