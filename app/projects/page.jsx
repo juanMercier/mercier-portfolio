@@ -18,7 +18,7 @@ const projects = [
         num: "01",
         category: "fullstack",
         title: "Cifra Uke Mercier",
-        description: "Website for music school",
+        description: "Developed two websites with React.js and Express.js hosted in Firebase for a music teaching school",
         stack: [{ name: "React.js" }, { name: "Vite" }, { name: "Firebase" }],
         image: "/assets/project1.png",
         live: "https://cifra-uke-mercier.web.app/",
@@ -27,12 +27,12 @@ const projects = [
     {
         num: "02",
         category: "fullstack",
-        title: "Cifra Uke Mercier",
-        description: "Website for music school",
-        stack: [{ name: "React.js" }, { name: "Vite" }, { name: "Firebase" }],
-        image: "/assets/project1.png",
+        title: "Lynxai",
+        description: "As a key member of the technical team at Lynxai, I played a crucial role in building and managing the fullstack infrastructure of our platform.",
+        stack: [{ name: "React.js" }, { name: "AWS" }],
+        image: "/assets/lynxaiWebsite.png",
         live: "https://cifra-uke-mercier.web.app/",
-        github: "https://github.com/juanMercier/cifra-uke-mercier.git",
+        github: "",
     }
 ]
 
@@ -65,8 +65,8 @@ export default function Projects() {
                             <div className='text-8xl leading-none font-extrabold text-white'>
                                 {project.num}
                             </div>
-                            <div>
-                                <h2 className='text-[42px]font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize'>
+                            <div className='flex flex-col gap-4'>
+                                <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize'>
                                     {project.category} project
                                 </h2>
                                 <p className='text-white/60'>{project.description}</p>
@@ -119,7 +119,7 @@ export default function Projects() {
                             {projects.map((project, index) => {
                                 return (
                                     <SwiperSlide key={index} className='w-full'>
-                                        <div className="h-[460px] relative group justify-center items-center bg-pink-50/20">
+                                        <div className="h-[460px] relative group justify-center items-center bg-pink-50/20 rounded-xl">
                                             {/* Overlay */}
                                             <div className='absolute top-0 bottom-0 w-full h-full bg-black/10 z-10'></div>
                                             {/* Image  */}
@@ -127,7 +127,7 @@ export default function Projects() {
                                                 <Image
                                                     src={project.image}
                                                     fill
-                                                    className='object-cover'
+                                                    className='object-cover rounded-xl'
                                                     alt=""
                                                 />
                                             </div>

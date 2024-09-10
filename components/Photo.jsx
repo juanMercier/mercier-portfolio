@@ -8,7 +8,7 @@ export default function Photo() {
         <div className='w-full h-full relative'>
             <motion.div initial={{ opacity: 0 }} animate={{
                 opacity: 1,
-                transition: { delay: 1, duration: 0.4, ease: "easeInOut" }
+                transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" }
             }}>
                 <motion.div className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] absolute'>
                     <Image src='/assets/photo-1.png' priority quality={100} fill alt="" className="object-contain" />
