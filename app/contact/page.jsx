@@ -16,7 +16,7 @@ import {
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-
+import { useForm, ValidationError } from '@formspree/react';
 
 const info = [
     {
@@ -37,6 +37,16 @@ const info = [
 ]
 
 export default function Contact() {
+
+    const [state, handleSubmit, reset] = useForm("xnnayrva");
+
+
+
+
+    if (state.succeeded) {
+        setTimeout(reset, 3000)
+    }
+
     return (
         <motion.section initial={{ opacity: 0 }}
             animate={{
@@ -49,43 +59,50 @@ export default function Contact() {
                 <div className='flex flex-col xl:flex-row gap-[30px]'>
                     {/* form */}
                     <div className='xl:w-[60%] order-2 xl:order-none'>
-                        <form className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'>
-                            <h3 className='text-4xl text-accent'>Let's work together</h3>
-                            <p className='text-white/60'>
-                            Excited about the opportunity to collaborate and create impactful solutions together.
-                            </p>
-                            {/* input   */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="firstname" placeholder="Firstname" />
-                                <Input type="lastname" placeholder="Lastname" />
-                                <Input type="email" placeholder="Email address" />
-                                <Input type="phone" placeholder="Phone number" />
-                            </div>
-                            {/* select */}
-                            <Select>
-                                <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Select a service" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Select a service</SelectLabel>
-                                        <SelectItem value="est">Web Development</SelectItem>
-                                        <SelectItem value="cst">Backend Infrastructure</SelectItem>
-                                        <SelectItem value="mst">UI/UX Design</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                            {/* textArea */}
-                            <Textarea className= "h-[200px]" placeholder="Type your message here"/>
-                            <Button size="md" className="max-w-40">
-                                Send message
-                            </Button>
-                        
-                        </form>
+                        {state.succeeded
+                            ? <motion.section className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'>
+                                <strong>Thanks for Contacting!</strong>
+                                <p>Looking for forward for collaborating together</p>
+                            </motion.section>
+                            : <form className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl' onSubmit={handleSubmit}>
+
+                                <h3 className='text-4xl text-accent'>Let's work together</h3>
+                                <p className='text-white/60'>
+                                    Excited about the opportunity to collaborate and create impactful solutions together.
+                                </p>
+                                {/* input   */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <Input type="firstname" name="firstname" placeholder="Firstname" />
+                                    <Input type="lastname" name="lastname" placeholder="Lastname" />
+                                    <Input type="email" name="email" placeholder="Email address" />
+                                    <Input type="phone" name="phone" placeholder="Phone number" />
+                                </div>
+                                {/* select */}
+                                <Select name="service">
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select a service" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>Select a service</SelectLabel>
+                                            <SelectItem value="webDev">Web Development</SelectItem>
+                                            <SelectItem value="backend">Backend Infrastructure</SelectItem>
+                                            <SelectItem value="uiux">UI/UX Design</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                                {/* textArea */}
+                                <Textarea className="h-[200px]" name="message" placeholder="Type your message here" />
+                                <Button size="md" className="max-w-40" type="submit" disabled={state.submitting}>
+                                    Send message
+                                </Button>
+
+                            </form>
+                        }
                     </div>
                     {/* info */}
                     <div className='flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0'>
-                        <ul className='flex flex-col gap-10'> 
+                        <ul className='flex flex-col gap-10'>
                             {info.map((item, index) => {
                                 return (
                                     <li key={index} className='flex items-center gap-6'>

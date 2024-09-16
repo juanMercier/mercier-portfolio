@@ -15,7 +15,7 @@ export default function Home() {
               Hello I'm <br /> <span className="text-accent">João Mercier</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              Passionate software engineer with over three years of experience in backend development, Node.js, cloud infrastructure, and microservices architecture.
+            Hi there! I'm João Mercier, a passionate web developer with 4+ years of experience building high-quality, scalable websites and web applications. My expertise lies in Next.js, Node.js, and AWS
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <a href="/assets/JoaoMercierResume.pdf" download="JoaoMercierResume.pdf">
