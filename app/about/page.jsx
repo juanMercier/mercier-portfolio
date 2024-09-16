@@ -52,7 +52,7 @@ const about = {
         },
         {
             fieldName: "Interests",
-            fieldValue: "Volunteer"
+            fieldValue: "Tech, Volunteer"
         },
 
     ]
@@ -254,9 +254,9 @@ export default function About() {
                                 <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>{about.description}</p>
                                 <ul className='grid grid-cols-1 xl:grid-cols-2 gap-y-6 gap-x-10 max-w-[620px] mx-auto xl:mx-0'>
                                     {about.info.map((item, index) => {
-                                        return <li key={index} className='flex items-center justify-center xl:justify-start gap-4'>
+                                        return <li key={index} className='flex items-center justify-between gap-4'>
                                             <span className='text-white/60'>{item.fieldName}</span>
-                                            <span className='text-md'>{item.fieldValue}</span>
+                                            <span className='text-md text-end'>{item.fieldValue}</span>
                                         </li>
                                     })}
                                 </ul>
