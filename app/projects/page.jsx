@@ -16,7 +16,32 @@ import WorkSliderButtons from '@/components/WorkSliderButtons';
 const projects = [
     {
         num: "01",
-        category: "fullstack",
+        category: "Project Management",
+        title: "Project Management App",
+        description: "Fullstack project and task web app fully scalable using the lastest technologies, with auth user system",
+        stack: [
+            { name: "Next.js" },
+            { name: "AWS" },
+            { name: "Node.js" },
+            { name: "Postgres" },
+        ],
+        image: "/assets/pm/photoShowOff.png",
+        live: "https://main.d1hr0wf5bahyjd.amplifyapp.com/",
+        github: "https://github.com/juanMercier/proj-management",
+    },
+    {
+        num: "02",
+        category: "Lynxai",
+        title: "Lynxai",
+        description: "As a key member of the technical team at Lynxai, I played a crucial role in building and managing the fullstack infrastructure of our platform.",
+        stack: [{ name: "React.js" }, { name: "AWS" }],
+        image: "/assets/landingPageCrop.png",
+        live: "https://lynxai.tech",
+        github: "",
+    },
+    {
+        num: "03",
+        category: "Cifra Uke Mercier",
         title: "Cifra Uke Mercier",
         description: "Developed two websites with React.js and Express.js hosted in Firebase for a music teaching school",
         stack: [{ name: "React.js" }, { name: "Vite" }, { name: "Firebase" }],
@@ -24,16 +49,7 @@ const projects = [
         live: "https://cifra-uke-mercier.web.app/",
         github: "https://github.com/juanMercier/cifra-uke-mercier.git",
     },
-    {
-        num: "02",
-        category: "fullstack",
-        title: "Lynxai",
-        description: "As a key member of the technical team at Lynxai, I played a crucial role in building and managing the fullstack infrastructure of our platform.",
-        stack: [{ name: "React.js" }, { name: "AWS" }],
-        image: "/assets/lynxaiWebsite.png",
-        live: "https://cifra-uke-mercier.web.app/",
-        github: "",
-    }
+
 ]
 
 export default function Projects() {
@@ -67,7 +83,7 @@ export default function Projects() {
                             </div>
                             <div className='flex flex-col gap-4'>
                                 <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize'>
-                                    {project.category} project
+                                    {project.category}
                                 </h2>
                                 <p className='text-white/60'>{project.description}</p>
                                 <ul className='flex gap-4'>
@@ -135,9 +151,9 @@ export default function Projects() {
                                     </SwiperSlide>)
                             })}
                             {/* swiper buttons */}
-                            <WorkSliderButtons 
-                            containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                            btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"   
+                            <WorkSliderButtons
+                                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
                             />
                         </Swiper>
                     </div>
