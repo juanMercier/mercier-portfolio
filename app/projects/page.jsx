@@ -1,21 +1,25 @@
-"use client";
+'use client'
 
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { motion, useInView, useAnimation } from 'framer-motion'
+import { BsArrowUpRight, BsGithub } from 'react-icons/bs'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-
-import Link from 'next/link';
-import Image from 'next/image';
-
-import { BsArrowUpRight, BsGithub } from 'react-icons/bs';
-import WorkSliderButtons from '@/components/WorkSliderButtons';
 
 const projects = [
     {
         num: "01",
+        category: "UkeMercier Website",
+        title: "UkeMercier Website",
+        description: "Developed two websites with Next.js hosted in Vercel for a music teaching school",
+        stack: [{ name: "Next.js" }, { name: "MongoDB" }, { name: "Vercel" }],
+        image: "/assets/project1.png",
+        live: "https://www.ukemercier.pt",
+        github: "https://github.com/juanMercier/uke-mercier-website",
+    },
+    {
+        num: "02",
         category: "Project Management",
         title: "Project Management App",
         description: "Fullstack project and task web app fully scalable using the lastest technologies, with auth user system",
@@ -30,135 +34,120 @@ const projects = [
         github: "https://github.com/juanMercier/proj-management",
     },
     {
-        num: "02",
+        num: "03",
         category: "Lynxai",
         title: "Lynxai",
         description: "As a key member of the technical team at Lynxai, I played a crucial role in building and managing the fullstack infrastructure of our platform.",
-        stack: [{ name: "React.js" }, { name: "AWS" }],
-        image: "/assets/landingPageCrop.png",
+        stack: [{ name: "React.js" }, { name: "AWS" }, { name: "Node" }, { name: "Serveless" }],
+        image: "/assets/Image_Editor (2).png",
         live: "https://lynxai.tech",
         github: "",
     },
     {
-        num: "03",
-        category: "Cifra Uke Mercier",
-        title: "Cifra Uke Mercier",
-        description: "Developed two websites with React.js and Express.js hosted in Firebase for a music teaching school",
-        stack: [{ name: "React.js" }, { name: "Vite" }, { name: "Firebase" }],
-        image: "/assets/project1.png",
-        live: "https://cifra-uke-mercier.web.app/",
-        github: "https://github.com/juanMercier/cifra-uke-mercier.git",
+        num: "04",
+        category: "Recycular",
+        title: "Recycular",
+        description: "Developed a mobile app for a circular economy recycling brand where a user can scan a QR code to access all the perks of being a good samaritan",
+        stack: [{ name: "React Native" }, { name: "AWS" }],
+        image: "/assets/Image_Editor (1).png",
+        live: "",
+        github: "",
     },
-
 ]
 
-export default function Projects() {
-    const [project, setProject] = useState(projects[0])
+const ProjectCard = ({ project, index }) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const controls = useAnimation()
 
-
-    function handleSlideChange(swiper) {
-        const currentIndex = swiper.activeIndex;
-
-        setProject(projects[currentIndex]);
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible")
     }
-    return (
-        <motion.section
-            initial={{ opacity: 0 }}
-            animate={{
-                opacity: 1,
-                transition: {
-                    delay: 2.4,
-                    duration: 0.4,
-                    ease: "easeIn"
-                }
-            }}
-            className='min-h-[80vh] flex flex-col justify-center py-12 xl:px-0'
-        >
-            <div className='container mx-auto'>
-                <div className='flex flex-col xl:flex-row xl:gap-[30px]'>
-                    <div className='w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none'>
-                        <div className='flex flex-col gap-[30px] h-[50%]'>
-                            <div className='text-8xl leading-none font-extrabold text-white'>
-                                {project.num}
-                            </div>
-                            <div className='flex flex-col gap-4'>
-                                <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize'>
-                                    {project.category}
-                                </h2>
-                                <p className='text-white/60'>{project.description}</p>
-                                <ul className='flex gap-4'>
-                                    {project.stack.map((item, index) => {
-                                        return <li key={index} className='text-xl text-accent'>{item.name}{index !== project.stack.length - 1 && ","}</li>
-                                    })}
-                                </ul>
-                                <div className="border border-white/20"></div>
-                                {/*buttons*/}
-                                <div className='flex items-center gap-4'>
-                                    {/* Live project Button */}
-                                    <Link href={project.live}>
-                                        <TooltipProvider delayDuration={100}>
-                                            <Tooltip>
-                                                <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
-                                                    <BsArrowUpRight className='text-white text-3xl group-hover:text-accent' />
-                                                </TooltipTrigger>
-                                                <TooltipContent>
-                                                    <p>Live Project</p>
-                                                </TooltipContent>
-                                            </Tooltip>
-                                        </TooltipProvider>
-                                    </Link>
-                                    {/* Github project Button */}
-                                    <Link href={project.github}>
-                                        <TooltipProvider delayDuration={100}>
-                                            <Tooltip>
-                                                <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
-                                                    <BsGithub className='text-white text-3xl group-hover:text-accent' />
-                                                </TooltipTrigger>
-                                                <TooltipContent>
-                                                    <p>Github Project</p>
-                                                </TooltipContent>
-                                            </Tooltip>
-                                        </TooltipProvider>
-                                    </Link>
+  }, [isInView, controls])
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='w-full xl:w-[50%]'>
-                        <Swiper
-                            spaceBetween={30}
-                            slidesPerView={1}
-                            className='xl:h-[520px] mb-12'
-                            onSlideChange={handleSlideChange}
-                        >
-                            {projects.map((project, index) => {
-                                return (
-                                    <SwiperSlide key={index} className='w-full'>
-                                        <div className="h-[460px] relative group justify-center items-center bg-pink-50/20 rounded-xl">
-                                            {/* Overlay */}
-                                            <div className='absolute top-0 bottom-0 w-full h-full bg-black/10 z-10'></div>
-                                            {/* Image  */}
-                                            <div className='relative w-full h-full'>
-                                                <Image
-                                                    src={project.image}
-                                                    fill
-                                                    className='object-cover rounded-xl'
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>)
-                            })}
-                            {/* swiper buttons */}
-                            <WorkSliderButtons
-                                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
-                            />
-                        </Swiper>
-                    </div>
-                </div>
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.2 } },
+      }}
+      className="bg-white/5 rounded-xl p-6 flex flex-col lg:flex-row gap-6 hover:bg-white/10 transition-all duration-300"
+    >
+      <div className="lg:w-1/2">
+        <div className="relative h-[300px] rounded-xl overflow-hidden group">
+          <Image
+            src={project.image}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-110"
+            alt={`${project.category} project`}
+          />
+          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div className="flex gap-4">
+              <ProjectLink href={project.live} icon={BsArrowUpRight} tooltip="Live Project" />
+              <ProjectLink href={project.github} icon={BsGithub} tooltip="GitHub Repository" />
             </div>
-        </motion.section>
-    );
+          </div>
+        </div>
+      </div>
+      <div className="lg:w-1/2 flex flex-col justify-between">
+        <div>
+          <span className="text-6xl font-extrabold text-accent">{project.num}</span>
+          <h2 className="text-3xl font-bold text-white mt-2 mb-4">{project.category}</h2>
+          <p className="text-white/60 mb-4">{project.description}</p>
+          <ul className="flex flex-wrap gap-2 mb-6">
+            {project.stack.map((item, index) => (
+              <li key={index} className="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex gap-4">
+          <ProjectLink href={project.live} icon={BsArrowUpRight} tooltip="Live Project" />
+          <ProjectLink href={project.github} icon={BsGithub} tooltip="GitHub Repository" />
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+const ProjectLink = ({ href, icon: Icon, tooltip }) => (
+  <TooltipProvider delayDuration={100}>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Link href={href} className="w-12 h-12 rounded-full bg-white/10 flex justify-center items-center group transition-colors duration-300 hover:bg-accent">
+          <Icon className="text-white text-xl group-hover:text-primary transition-colors duration-300" />
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>{tooltip}</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+)
+
+export default function Projects() {
+  return (
+    <section className="min-h-screen bg-primary py-20">
+      <div className="container mx-auto px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-5xl font-bold text-white text-center mb-16"
+        >
+          My Projects
+        </motion.h1>
+        <div className="grid gap-12">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
