@@ -16,7 +16,7 @@ import {
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import { useForm, ValidationError } from '@formspree/react';
+import { useForm } from '@formspree/react';
 
 const info = [
     {
@@ -72,14 +72,14 @@ export default function Contact() {
                                 </p>
                                 {/* input   */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <Input type="firstname" name="firstname" placeholder="Firstname" />
-                                    <Input type="lastname" name="lastname" placeholder="Lastname" />
-                                    <Input type="email" name="email" placeholder="Email address" />
-                                    <Input type="phone" name="phone" placeholder="Phone number" />
+                                    <Input type="text" name="firstname" placeholder="Firstname" aria-label="First name" required />
+                                    <Input type="text" name="lastname" placeholder="Lastname" aria-label="Last name" required />
+                                    <Input type="email" name="email" placeholder="Email address" aria-label="Email address" required />
+                                    <Input type="tel" name="phone" placeholder="Phone number" aria-label="Phone number" />
                                 </div>
                                 {/* select */}
-                                <Select name="service">
-                                    <SelectTrigger className="w-full">
+                                <Select name="service" required>
+                                    <SelectTrigger className="w-full" aria-label="Select a service">
                                         <SelectValue placeholder="Select a service" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -92,9 +92,9 @@ export default function Contact() {
                                     </SelectContent>
                                 </Select>
                                 {/* textArea */}
-                                <Textarea className="h-[200px]" name="message" placeholder="Type your message here" />
+                                <Textarea className="h-[200px]" name="message" placeholder="Type your message here" aria-label="Your message" required />
                                 <Button size="md" className="max-w-40" type="submit" disabled={state.submitting}>
-                                    Send message
+                                    {state.submitting ? "Sending..." : "Send message"}
                                 </Button>
 
                             </form>

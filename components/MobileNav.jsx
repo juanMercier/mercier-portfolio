@@ -4,36 +4,14 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from 'react-icons/ci'
-
-const links = [
-    {
-        name: "home",
-        path: "/",
-    },
-    // {
-    //     name: "services",
-    //     path: "/services",
-    // },
-    {
-        name: "about",
-        path: "/about",
-    },
-    {
-        name: "projects",
-        path: "/projects",
-    },
-    {
-        name: "contact",
-        path: "/contact",
-    },
-]
+import { navigationLinks } from "@/lib/navigation";
 
 export default function MobileNav() {
     const pathname = usePathname();
 
     return (
         <Sheet>
-            <SheetTrigger className="flex justify-center items-center">
+            <SheetTrigger className="flex justify-center items-center" aria-label="Open navigation menu">
                 <CiMenuFries className="text-[32px] text-accent" />
             </SheetTrigger>
             <SheetContent className="flex flex-col">
@@ -45,7 +23,7 @@ export default function MobileNav() {
                     </Link>
                 </div>
                 <nav className=" flex flex-col justify-center items-center gap-8">
-                    {links.map((link, index) => {
+                    {navigationLinks.map((link, index) => {
                         return <Link
                             href={link.path}
                             key={index}
