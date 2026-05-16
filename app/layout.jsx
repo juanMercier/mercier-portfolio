@@ -2,7 +2,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTansition";
+import StairTransition from "@/components/StairTransition";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -11,8 +11,30 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Joao Mercier's Portfolio",
-  description: "",
+  title: {
+    default: "João Mercier | Fullstack Developer",
+    template: "%s | João Mercier"
+  },
+  description: "Fullstack Developer specializing in Next.js, React, AWS, and Node.js. Building scalable web applications with modern technologies.",
+  keywords: ["Fullstack Developer", "Software Engineer", "Next.js", "React", "AWS", "Node.js", "Web Development"],
+  authors: [{ name: "João Mercier" }],
+  openGraph: {
+    title: "João Mercier | Fullstack Developer",
+    description: "Fullstack Developer specializing in Next.js, React, AWS, and Node.js. Building scalable web applications with modern technologies.",
+    url: "https://mercier.dev",
+    siteName: "João Mercier Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "João Mercier | Fullstack Developer",
+    description: "Fullstack Developer specializing in Next.js, React, AWS, and Node.js.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }) {

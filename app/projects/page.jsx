@@ -115,20 +115,24 @@ const ProjectCard = ({ project, index }) => {
   )
 }
 
-const ProjectLink = ({ href, icon: Icon, tooltip }) => (
-  <TooltipProvider delayDuration={100}>
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Link href={href} className="w-12 h-12 rounded-full bg-white/10 flex justify-center items-center group transition-colors duration-300 hover:bg-accent">
-          <Icon className="text-white text-xl group-hover:text-primary transition-colors duration-300" />
-        </Link>
-      </TooltipTrigger>
-      <TooltipContent>
-        <p>{tooltip}</p>
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
-)
+const ProjectLink = ({ href, icon: Icon, tooltip }) => {
+  if (!href) return null;
+
+  return (
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Link href={href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex justify-center items-center group transition-colors duration-300 hover:bg-accent" aria-label={tooltip}>
+            <Icon className="text-white text-xl group-hover:text-primary transition-colors duration-300" />
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltip}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
 
 export default function Projects() {
   return (
