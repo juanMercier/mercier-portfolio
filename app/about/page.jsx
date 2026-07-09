@@ -1,7 +1,9 @@
 "use client";
 
-import { FaJs, FaAws, FaPython, FaReact, FaNodeJs, FaFigma } from 'react-icons/fa'
-import { SiTailwindcss, SiNextdotjs } from 'react-icons/si'
+import { FaJs, FaAws, FaPython, FaReact, FaNodeJs, FaFigma, FaDatabase } from 'react-icons/fa'
+import { SiTailwindcss, SiNextdotjs, SiPostgresql } from 'react-icons/si'
+import { TbBrandReactNative } from 'react-icons/tb'
+import { BsLightningFill, BsGear } from 'react-icons/bs'
 import {
     Tabs,
     TabsContent,
@@ -32,7 +34,7 @@ const about = {
         },
         {
             fieldName: "Experience",
-            fieldValue: "3+ Years"
+            fieldValue: "4+ Years"
         },
         {
             fieldName: "Nationality",
@@ -64,9 +66,14 @@ const experience = {
     description: "Years of hands-on expertise in dynamic and fast-paced environments.",
     items: [
         {
+            company: "EDP",
+            position: "Software Engineer",
+            duration: "2025 - Present"
+        },
+        {
             company: "Freelancer",
             position: "Fullstack Developer",
-            duration: "2024"
+            duration: "2024 - 2025"
         },
         {
             company: "Lynxai",
@@ -159,7 +166,23 @@ const skills = {
         {
             icon: <SiTailwindcss />,
             name: "Tailwind CSS",
-        }
+        },
+        {
+            icon: <TbBrandReactNative />,
+            name: "React Native",
+        },
+        {
+            icon: <SiPostgresql />,
+            name: "PostgreSQL",
+        },
+        {
+            icon: <BsLightningFill />,
+            name: "Serverless / Lambda",
+        },
+        {
+            icon: <BsGear />,
+            name: "Appian",
+        },
     ]
 }
 
