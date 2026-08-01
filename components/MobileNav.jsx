@@ -33,6 +33,12 @@ export default function MobileNav() {
                             {link.name}
                         </Link>
                     })}
+                    <Link
+                        href="/contact"
+                        className={`${"/contact" === pathname && "text-accent border-b-2 border-accent"} text-xl capitalize hover:text-accent transition-all`}
+                    >
+                        contact
+                    </Link>
                 </nav>
             </SheetContent>
         </Sheet>
